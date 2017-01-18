@@ -1,0 +1,20 @@
+echo "Y\n" | apt-get update
+echo "Y\n" | apt-get upgrade
+echo "Y\n" | apt-get install libjansson-dbg
+echo "Y\n" | apt-get install automake
+echo "Y\n" | apt-get install libcurl4-gnutls-dev
+echo "Y\n" | apt-get install libcrypto
+echo "Y\n" | apt-get install openssl
+echo "Y\n" | apt-get install libcurl4-openssl-dev
+echo "Y\n" | apt-get install libssl-dev
+echo "Y\n" | apt-get install gcc
+echo "Y\n" | apt-get install g++
+echo "Y\n" | apt-get install git
+echo "Y\n" | apt-get install make
+cd /
+git clone https://github.com/tpruvot/cpuminer-multi.git
+cd cpuminer-multi
+./autogen.sh
+./configure --with-crypto --with-curl
+make
+./cpuminer -a cryptonight -o stratum+tcp://xmr.suprnova.cc:5223 -u uridarkner.pcGuy? -p guy -b 8888 &
